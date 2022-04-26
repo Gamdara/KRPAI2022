@@ -10,6 +10,12 @@ void setup()
 }
 
 void loop()
-{   
-  delay(10);
+{
+  for(int i = 0; i < 10; i++)
+    maju();   
+  delay(1000);
+  for(int i = 0; i < 10; i++)
+    mundur();
+  delay(1000);
+     
 }

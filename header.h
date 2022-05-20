@@ -1,4 +1,16 @@
 #include <Arduino.h>
+#include <math.h> 
+#include <vector_type.h>
+
+#define PI 3.14159265
+#define coxaLength 0
+#define fermurLength 7
+#define thibiaLength 11
+
+#define MAJU 1
+#define MUNDUR -1
+
+
 
 //=== PREPROCESSOR =====================================================
 //--- AX12A

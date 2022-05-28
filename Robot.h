@@ -1,15 +1,21 @@
-#include "header.h"
-#include "LegGroup.h"
+#include "KakiGroup.h"
+#include "SensorJarakGroup.h"
+#include "SensorWarna.h"
+#include "SensorGaris.h"
+#include "Capit.h"
+#include "Kompas.h"
+#include "PemadamApi.h"
 
 class Robot{
-  private:
-    LegGroup legs;
+//    Capit capit;
+//    SensorWarna sWarna;
+//    SensorGaris sGaris;
+//    SensorJarakGroup mata;
+//    PemadamApi pemadam;
+//    Kompas kompas;
   public:
-    Robot(){}
+    KakiGroup kaki;
     Robot(){
       
-    }
-    void walk(dir){
-        legs.walk(dir);
     }
 };

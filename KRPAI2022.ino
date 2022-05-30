@@ -9,7 +9,7 @@ void setup()
 {
   ax12a.begin(BaudRate, DirectionPin, &Serial);
   Serial.begin(1000000);
-  coba = Kaki(5,2,6, 1,1,2);
+  coba = Kaki(1,2,3  , 1,1,2);
 //  KSR = Robot();
 //  KSR.kaki.init();
 //  delay(2000);

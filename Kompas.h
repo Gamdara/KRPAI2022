@@ -1,4 +1,3 @@
-#include <QMC5883LCompass.h>
 
 class Kompas{
   private:

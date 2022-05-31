@@ -3,8 +3,8 @@
 #include <vector_type.h>
 #include <ArduinoQueue.h>
 #include "InversKinematik.h"
+#include <QMC5883LCompass.h>
 
-#define PI 3.14159265
 
 #define MAJU 1
 #define MUNDUR -1

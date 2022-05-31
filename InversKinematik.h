@@ -1,5 +1,5 @@
-#define coxaLength 0
-#define fermurLength 10
+#define coxaLength 2.5
+#define fermurLength 5
 #define thibiaLength 8
 
 vec3_t rotateMatrix(vec3_t from, float deg){
@@ -23,8 +23,9 @@ vec3_t InversKinematik(vec3_t target){
     float thetaT = (acos((pow(fermurLength, 2) + pow(thibiaLength, 2) - pow(a, 2) )/ (2 * thibiaLength * fermurLength)) * 180/PI - 90);
     
     //normalisasi
-    thetaC = 90 - thetaC;
-    thetaT = thetaT - 90;
+//    thetaC = 90 - thetaC;
+    thetaF = 0 - thetaF - 45;
+    thetaT = 0 - (thetaT - 90) - 45;
     return {thetaC,thetaF,thetaT};
 }
 

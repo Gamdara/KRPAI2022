@@ -1,6 +1,3 @@
-#include <ArduinoQueue.h>
-
-
 class Kaki{
   private:
     int coxaID;
@@ -24,7 +21,7 @@ class Kaki{
       this->grup = grup;
       this->letak = letak;
       
-      this->standPoint = {0,-6,8};
+      this->standPoint = {0,-10,4};
       
       if(letak == 1)
           this->standPointSpread = rotateMatrix(this->standPoint, -45 * this->pos);
@@ -46,9 +43,9 @@ class Kaki{
     }
     
     void jalan(int dir){
-        vec3_t P1 = {-4,0,0};
-        vec3_t tinggi = {0,4,0};
-        vec3_t P4 = {4,0,0};
+        vec3_t P1 = {-2,0,0};
+        vec3_t tinggi = {0,3,0};
+        vec3_t P4 = {2,0,0};
 
         if(this->grup == 1){
             langkah(standPoint + P1 * dir,standPoint + tinggi + P1 * dir,standPoint + tinggi + P4 * dir,standPoint + P4 * dir,0.1);
@@ -62,10 +59,27 @@ class Kaki{
         }
     }
 
+    void jalanSamping(int dir){
+        vec3_t P1 = {0,0,1 * this->pos};
+        vec3_t tinggi = {0,1,0};
+        vec3_t P4 = {0,0,-1* this->pos};
+
+        if(this->grup == 1){
+            langkah(standPointSpread + P1 * dir,standPointSpread + tinggi + P1 * dir,standPointSpread + tinggi + P4 * dir,standPointSpread + P4 * dir,0.1);
+            delay(200);
+            langkah(standPointSpread + P4 * dir,standPointSpread + P4 * dir,standPointSpread +  P1 * dir,standPointSpread + P1 * dir,0.1);
+        }
+        else{
+            langkah(standPointSpread + P4 * dir,standPointSpread + P4 * dir,standPointSpread +  P1 * dir,standPointSpread + P1 * dir,0.1);
+            delay(200);
+            langkah(standPointSpread + P1 * dir,standPointSpread + tinggi + P1 * dir,standPointSpread + tinggi + P4 * dir,standPointSpread + P4 * dir,0.1);
+        }
+    }
+
     void jalanSpread(int dir){
-        vec3_t P1 = {-4,0,0};
-        vec3_t tinggi = {0,4,0};
-        vec3_t P4 = {4,0,0};
+        vec3_t P1 = {-2,0,0};
+        vec3_t tinggi = {0,3,0};
+        vec3_t P4 = {2,0,0};
         
         if(this->grup == 1){
             langkah(standPointSpread + P1 * dir,standPointSpread + tinggi + P1 * dir,standPointSpread + tinggi + P4 * dir,standPointSpread + P4 * dir,0.1);
@@ -83,8 +97,8 @@ class Kaki{
         vec3_t target = this->standPointSpread;
         vec3_t fw = rotateMatrix(target, deg * dir);
         vec3_t bw = rotateMatrix(target, deg *-1 * dir);
-        vec3_t tinggi = {0,4,0};
-        vec3_t titikBantu = {0,4,target.z-target.z};
+        vec3_t tinggi = {0,3,0};
+        vec3_t titikBantu = {0,3,target.z-target.z};
         
         if(this->grup == 1){
             langkah(fw,fw + titikBantu + tinggi,bw+ titikBantu + tinggi,bw,0.1);

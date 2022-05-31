@@ -28,24 +28,7 @@ vec3_t InversKinematik(vec3_t target){
     return {thetaC,thetaF,thetaT};
 }
 
-ArduinoQueue<vec3_t> trajectory(vec3_t P1,vec3_t P2,vec3_t P3,vec3_t P4, float t){
-    ArduinoQueue<vec3_t> result(1/t + 3);
-    float mult = t;
-    result.enqueue(P1);
-    while(t<1){
-        vec3_t Pt = pow(1-t,3) * P1 + 3*t*pow(1-t,2) * P2 + 3*t*t*(1-t) * P3 + pow(t,3) * P4;
-        result.enqueue(Pt);
-        t += mult;
-        Serial.print(Pt.x);
-        Serial.print(" ");
-        Serial.print(Pt.y);
-        Serial.print(" ");
-        Serial.print(Pt.z);
-        Serial.println(" ");
-    }
-    result.enqueue(P4);
-    return result;
-}
+
 
 int mapServo(int deg){
   return map(deg, 0, 150, 512, 0);

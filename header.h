@@ -6,6 +6,8 @@
 #include <AX12A.h> 
 #include <vector_type.h> 
 #include <ArduinoQueue.h> 
+#include <QMC5883LCompass.h>
+
 
 
 #define DirectionPin   (10u)

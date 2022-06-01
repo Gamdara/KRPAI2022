@@ -8,7 +8,10 @@
 #include <ArduinoQueue.h> 
 #include <QMC5883LCompass.h>
 
-
+#define lamabanget 200
+#define lama 100
+#define sedang 50
+#define cepet 20
 
 #define DirectionPin   (10u)
 #define BaudRate      (1000000ul)

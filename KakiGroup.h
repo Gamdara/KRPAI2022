@@ -48,28 +48,28 @@ class KakiGroup{
       LF.moveDeg({30 * LF.pos * dir,0,-90});
       RM.moveDeg({30 * RM.pos * dir,0,-90});
       LB.moveDeg({30 * RB.pos * dir,0,-90});
-      delay(100);
+      delay(lama);
       RF.moveDeg({30 * RF.pos * dir,0,-45});
       LM.moveDeg({30 * LM.pos * dir,0,-45});
       RB.moveDeg({30 * RB.pos * dir,0,-45});
       LF.moveDeg({-30 * LF.pos * dir,0,-90});
       RM.moveDeg({-30 * RM.pos * dir,0,-90});
       LB.moveDeg({-30 * RB.pos * dir,0,-90});
-      delay(100);
+      delay(lama);
       RF.moveDeg({30 * RF.pos * dir,0,-90});
       LM.moveDeg({30 * LM.pos * dir,0,-90});
       RB.moveDeg({30 * RB.pos * dir,0,-90});
       LF.moveDeg({-30 * LF.pos * dir,0,-45});
       RM.moveDeg({-30 * RM.pos * dir,0,-45});
       LB.moveDeg({-30 * RB.pos * dir,0,-45});
-      delay(100);
+      delay(lama);
       RF.moveDeg({-30 * RF.pos * dir,0,-90});
       LM.moveDeg({-30 * LM.pos * dir,0,-90});
       RB.moveDeg({-30 * RB.pos * dir,0,-90});
       LF.moveDeg({30 * LF.pos * dir,0,-45});
       RM.moveDeg({30 * RM.pos * dir,0,-45});
       LB.moveDeg({30 * RB.pos * dir,0,-45});
-      delay(100);
+      delay(lama);
     }
 
     void putar(int dir){
@@ -79,28 +79,28 @@ class KakiGroup{
       LF.moveDeg({30 * LF.pos * dir,0,-90});
       RM.moveDeg({30 * RM.pos * dir,0,-90});
       LB.moveDeg({30 * RB.pos * dir,0,-90});
-      delay(100);
+      delay(lama);
       RF.moveDeg({30 * RF.pos * dir,0,-45});
       LM.moveDeg({30 * LM.pos * dir,0,-45});
       RB.moveDeg({30 * RB.pos * dir,0,-45});
       LF.moveDeg({-30 * LF.pos * dir,0,-90});
       RM.moveDeg({-30 * RM.pos * dir,0,-90});
       LB.moveDeg({-30 * RB.pos * dir,0,-90});
-      delay(100);
+      delay(lama);
       RF.moveDeg({30 * RF.pos * dir,0,-90});
       LM.moveDeg({30 * LM.pos * dir,0,-90});
       RB.moveDeg({30 * RB.pos * dir,0,-90});
       LF.moveDeg({-30 * LF.pos * dir,0,-45});
       RM.moveDeg({-30 * RM.pos * dir,0,-45});
       LB.moveDeg({-30 * RB.pos * dir,0,-45});
-      delay(100);
+      delay(lama);
       RF.moveDeg({-30 * RF.pos * dir,0,-90});
       LM.moveDeg({-30 * LM.pos * dir,0,-90});
       RB.moveDeg({-30 * RB.pos * dir,0,-90});
       LF.moveDeg({30 * LF.pos * dir,0,-45});
       RM.moveDeg({30 * RM.pos * dir,0,-45});
       LB.moveDeg({30 * RB.pos * dir,0,-45});
-      delay(100);
+      delay(lama);
     }
 
     void jalanTest(int dir){
@@ -138,7 +138,7 @@ class KakiGroup{
           delay(20);
           LB.moveDeg({bTemp.x * LB.pos, bTemp.y,bTemp.z });
           delay(20);
-          delay(100);
+          delay(lama);
       }
 
       backSteps = trajectory(
@@ -170,7 +170,7 @@ class KakiGroup{
           delay(20);
           LB.moveDeg({bTemp.x * LB.pos, bTemp.y,bTemp.z });
           delay(20);
-          delay(100);
+          delay(lama);
       }
       
     }

@@ -61,12 +61,12 @@ class Kaki{
 //        
 //        if(this->grup == 1){
 //            langkah(fw,fw + titikBantu + tinggi,bw+ titikBantu + tinggi,bw,0.3);
-//            delay(200);
+//            delay(lamabanget);
 //            langkah(bw,bw + titikBantu,fw+ titikBantu ,fw,0.3);
 //        }
 //        else{
 //            langkah(bw,bw + titikBantu,fw+ titikBantu ,fw,0.3);
-//            delay(200);
+//            delay(lamabanget);
 //            langkah(fw,fw + titikBantu + tinggi,bw+ titikBantu + tinggi,bw,0.3);
 //        }
 //    }

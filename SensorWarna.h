@@ -43,7 +43,7 @@ class SensorWarna{
         frequency = pulseIn(sensorOut, LOW);
         int R = frequency;
         // print hasil Red
-        delay(50);
+        delay(sedang);
         
         // Setting Green filtered photodiodes to be read
         digitalWrite(S2, HIGH);
@@ -53,7 +53,7 @@ class SensorWarna{
         int G = frequency;
         // Printing the value on the serial monitor
         
-        delay(50);
+        delay(sedang);
        
         // Setting Blue filtered photodiodes to be read
         digitalWrite(S2, LOW);
@@ -62,7 +62,7 @@ class SensorWarna{
         frequency = pulseIn(sensorOut, LOW);
         int B = frequency;
         
-        delay(50);
+        delay(sedang);
 
         return {R,G,B};
     }

@@ -7,66 +7,142 @@ void setup(){
   Serial.begin(1000000);
   coba.berdiri();
   delay(1000);
+}
+
+void testPanjat(){
   coba.initPanjatDua();
-  delay(200);
+  delay(lamabanget);
+
+  coba.panjatDua(1);
+  delay(lamabanget);
+  coba.panjatDua(2);
+  delay(lamabanget);  
+}
+
+void testPanjatKuda(){
+  coba.initKuda();
+  delay(lamabanget);
+
+  for(int i = 0; i < 5; i++){
+    coba.panjatKuda(45);
+    delay(lamabanget);   
+  }
+}
+
+void testPanjatPenyu(){
+  coba.initPenyu();
+  delay(lamabanget);
+
+  for(int i = 0; i < 5; i++){
+    coba.panjatPenyu(); 
+    delay(lamabanget);   
+  }
+}
+
+void testJalan(){
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 10; i++){
+    coba.jalan(MAJU);
+    delay(sedang);
+  }
+  
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 10  ; i++){
+    coba.jalan(MUNDUR);
+    delay(sedang);
+  }
+}
+
+void testPUTAR(){
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.putar(KANAN);
+    delay(sedang);
+  }
+  
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 2; i++){
+    coba.putar(KANAN);
+    delay(sedang);
+  }
+
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.putar(KANAN);
+    delay(sedang);
+  }
+}
+
+void testJalur(){
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.jalan(MAJU);
+    delay(sedang);
+  }
+  
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.putar(KANAN);
+    delay(sedang);
+  }
+  
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.jalan(MAJU);
+    delay(sedang);
+  }
+  
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.putar(KIRI);
+    delay(sedang);
+  }
+
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.jalan(MUNDUR);
+    delay(sedang);
+  }
+
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.putar(KANAN);
+    delay(sedang);
+  }
+
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.jalan(MUNDUR);
+    delay(sedang);
+  }
+
+  coba.berdiri();
+  delay(2000);
+  for(int i = 0; i < 3; i++){
+    coba.putar(KIRI);
+    delay(sedang);
+  }  
 }
 
 void loop(){
-  coba.panjatDua();
-  delay(100);
-//  for(int i = 0; i < 3; i++){
-//    coba.jalan(MAJU);
-//    delay(200);
-//  }
-//  
-//  coba.berdiri();
+//  testPUTAR();
+ //  delay(2000);
+//  testJalan();
 //  delay(2000);
-//  for(int i = 0; i < 3; i++){
-//    coba.putar(KANAN);
-//    delay(200);
-//  }
-//  
-//  coba.berdiri();
-//  delay(2000);
-//  for(int i = 0; i < 3; i++){
-//    coba.jalan(MUNDUR);
-//    delay(200);
-//  }
-//  
-//  coba.berdiri();
-//  delay(2000);
-//  for(int i = 0; i < 3; i++){
-//    coba.putar(KIRI);
-//    delay(200);
-//  }
-
-//  coba.berdiri();
-//  delay(2000);
-//  for(int i = 0; i < 5; i++){
-//    coba.jalan(MUNDUR);
-//    delay(200);
-//  }
-//
-//  coba.berdiri();
-//  delay(2000);
-//  for(int i = 0; i < 5; i++){
-//    coba.putar(KANAN);
-//    delay(200);
-//  }
-//
-//  coba.berdiri();
-//  delay(2000);
-//  for(int i = 0; i < 5; i++){
-//    coba.jalan(MUNDUR);
-//    delay(200);
-//  }
-//
-//  coba.berdiri();
-//  delay(2000);
-//  for(int i = 0; i < 5; i++){
-//    coba.putar(KIRI);
-//    delay(200);
-//  }
   
-  delay(1000);
+//  testPanjatKuda();
+  testPanjatPenyu();
+  
 }

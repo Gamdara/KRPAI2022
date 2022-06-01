@@ -23,7 +23,7 @@ class Capit{
         atas.write(i);
         delay(2);
       } 
-      delay(200);
+      delay(lamabanget);
       
       for(int i = 29; i < 115; i++) {
         atas.write(i);

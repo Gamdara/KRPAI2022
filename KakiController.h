@@ -31,6 +31,15 @@ class KakiController{
       RM.init();
       RB.init();
     }
+
+    void initPanjat(){
+      LF.berdiri();
+      LM.moveDeg({15 * LM.pos ,0,-90});
+      LB.berdiri();
+      RF.berdiri();
+      RM.moveDeg({15 * RM.pos ,0,-90});
+      RB.berdiri();
+    }
     
     void berdiri(){
       LF.berdiri();
@@ -40,67 +49,256 @@ class KakiController{
       RM.berdiri();
       RB.berdiri();
     }
-    
+
     void jalan(int dir){
+      LF.moveDeg({30 * LF.pos * dir,0,-90});
+      RM.moveDeg({30 * RM.pos * dir,0,-90});
+      LB.moveDeg({30 * LB.pos * dir,0,-90});
+      delay(50);
       RF.moveDeg({-30 * RF.pos * dir,0,-45});
       LM.moveDeg({-30 * LM.pos * dir,0,-45});
       RB.moveDeg({-30 * RB.pos * dir,0,-45});
-      LF.moveDeg({30 * LF.pos * dir,0,-90});
-      RM.moveDeg({30 * RM.pos * dir,0,-90});
-      LB.moveDeg({30 * RB.pos * dir,0,-90});
-      delay(100);
+      delay(50);
+
+      LF.moveDeg({-30 * LF.pos * dir,0,-90});
+      RM.moveDeg({-30 * RM.pos * dir,0,-90});
+      LB.moveDeg({-30 * LB.pos * dir,0,-90});
+      delay(50);
       RF.moveDeg({30 * RF.pos * dir,0,-45});
       LM.moveDeg({30 * LM.pos * dir,0,-45});
       RB.moveDeg({30 * RB.pos * dir,0,-45});
-      LF.moveDeg({-30 * LF.pos * dir,0,-90});
-      RM.moveDeg({-30 * RM.pos * dir,0,-90});
-      LB.moveDeg({-30 * RB.pos * dir,0,-90});
-      delay(100);
+      delay(50);
+
       RF.moveDeg({30 * RF.pos * dir,0,-90});
       LM.moveDeg({30 * LM.pos * dir,0,-90});
       RB.moveDeg({30 * RB.pos * dir,0,-90});
+      delay(50);
       LF.moveDeg({-30 * LF.pos * dir,0,-45});
       RM.moveDeg({-30 * RM.pos * dir,0,-45});
-      LB.moveDeg({-30 * RB.pos * dir,0,-45});
-      delay(100);
+      LB.moveDeg({-30 * LB.pos * dir,0,-45});
+      delay(50);
+      
       RF.moveDeg({-30 * RF.pos * dir,0,-90});
       LM.moveDeg({-30 * LM.pos * dir,0,-90});
       RB.moveDeg({-30 * RB.pos * dir,0,-90});
+      delay(50);
       LF.moveDeg({30 * LF.pos * dir,0,-45});
       RM.moveDeg({30 * RM.pos * dir,0,-45});
-      LB.moveDeg({30 * RB.pos * dir,0,-45});
+      LB.moveDeg({30 * LB.pos * dir,0,-45});
+      delay(50);
+    }
+    
+    void panjatInit(int dir){
+      LF.moveDeg({0 * LF.pos * dir,0,0});
+      RF.moveDeg({0 * RF.pos * dir,0,0});
+      delay(50);
+      LF.moveDeg({30 * LF.pos * dir,0,0});
+      RF.moveDeg({30 * RF.pos * dir,0,0});
       delay(100);
+      LF.moveDeg({30 * LF.pos * dir,0,-45});
+      RF.moveDeg({30 * RF.pos * dir,0,-45});
+      delay(50);
+      
+      LM.moveDeg({0 * LM.pos * dir,0,-90});
+      RM.moveDeg({0 * RM.pos * dir,0,-90});
+      LF.moveDeg({30 * LF.pos * dir,0,-90});
+      RF.moveDeg({30 * RF.pos * dir,0,-90});
+      delay(50);
+
+      RM.moveDeg({0 * RM.pos * dir,0,-45});
+      delay(50);
+      LM.moveDeg({0 * LM.pos * dir,0,-45});
+      delay(50);
+    }
+
+    void panjat(int dir){
+      RF.moveDeg({0 * RF.pos * dir,0,-90});
+      delay(50);
+      RB.moveDeg({-45 * RB.pos * dir,0,-90});
+      delay(50);
+
+      LF.moveDeg({0 * LF.pos * dir,0,-90});
+      delay(50);
+      LB.moveDeg({-45 * LB.pos * dir,0,-90});
+      delay(50);
+
+      RF.moveDeg({0 * RF.pos * dir,0,0});
+      delay(50);
+      RF.moveDeg({45 * RF.pos * dir,0,0});
+      delay(100);
+      RF.moveDeg({45 * RF.pos * dir,0,-90});
+      delay(50);
+
+      LF.moveDeg({0 * LF.pos * dir,0,0});
+      delay(50);
+      LF.moveDeg({45 * LF.pos * dir,0,0});
+      delay(100);
+      LF.moveDeg({45 * LF.pos * dir,0,-90});
+      delay(50);
+      
+//      RM.moveDeg({0 * RM.pos * dir,0,0});
+//      delay(50);
+//      RM.moveDeg({15 * RM.pos * dir,0,0});
+//      delay(100);
+//      RM.moveDeg({15 * RM.pos * dir,0,-90});
+//      delay(50);
+//      RM.moveDeg({0 * RM.pos * dir,0,-90});
+//      delay(50);
+//
+//      LM.moveDeg({0 * LM.pos * dir,0,0});
+//      delay(50);
+//      LM.moveDeg({15 * LM.pos * dir,0,0});
+//      delay(100);
+//      LM.moveDeg({15 * LM.pos * dir,0,-90});
+//      delay(50);
+//      LM.moveDeg({0 * LM.pos * dir,0,-90});
+//      delay(50);
+      RM.moveDeg({0 * RM.pos * dir,0,-70});
+      delay(50);
+      RB.moveDeg({-45 * RB.pos * dir,0,-45});
+      delay(50);
+      RB.moveDeg({0 * RB.pos * dir,0,-45});
+      delay(100);
+      RB.moveDeg({0 * RB.pos * dir,0,-90});
+      delay(50);
+      RM.moveDeg({0 * RM.pos * dir,0,-45});
+      delay(50);
+
+      LM.moveDeg({0 * LM.pos * dir,0,-70});
+      delay(50);
+      LB.moveDeg({-45 * LB.pos * dir,0,-45});
+      delay(50);
+      LB.moveDeg({0 * LB.pos * dir,0,-45});
+      delay(100);
+      LB.moveDeg({0 * LB.pos * dir,0,-90});
+      delay(50);
+      LM.moveDeg({0 * LM.pos * dir,0,-45});
+      delay(50);
+
+      RF.moveDeg({0 * RF.pos * dir,0,-90});
+      delay(50);
+      LF.moveDeg({0 * LF.pos * dir,0,-90});
+      delay(50);
+      
+      RB.moveDeg({-45 * RB.pos * dir,0,-90});
+      delay(50);
+      LB.moveDeg({-45 * LB.pos * dir,0,-90});
+      delay(50);
+    }
+
+    void initPanjatDua(){
+      RB.moveDeg({-45 * RB.pos ,0,-70});
+      delay(50);
+      LB.moveDeg({-45 * LB.pos ,0,-70});
+      delay(50);
+
+      RF.moveDeg({45 * RF.pos ,0,0});
+      delay(50);
+      LF.moveDeg({45 * LF.pos ,0,0});
+      delay(50);
+
+      RM.moveDeg({30 * RM.pos ,0,-90});
+      delay(50);
+      LM.moveDeg({30 * LM.pos ,0,-90});
+      delay(50);
+
+    }
+
+    void panjatDua(){
+      RM.moveDeg({-30 * RM.pos ,0,-90});
+      delay(50);
+      LM.moveDeg({-30 * LM.pos ,0,-90});
+      delay(50);
+
+      RF.moveDeg({45 * RF.pos ,0,-70});
+      delay(50);
+      LF.moveDeg({45 * LF.pos ,0,-70});
+      delay(50);
+      
+      RM.moveDeg({-30 * RM.pos ,0,0});
+      delay(50);
+      RM.moveDeg({30 * RM.pos ,0,0});
+      delay(100);
+      RM.moveDeg({30 * RM.pos ,0,-90});
+      delay(50);
+
+      LM.moveDeg({-30 * LM.pos ,0,0});
+      delay(50);
+      LM.moveDeg({30 * LM.pos ,0,0});
+      delay(100);
+      LM.moveDeg({30 * LM.pos ,0,-90});
+      delay(50);
+
+      RF.moveDeg({45 * RF.pos ,0,0});
+      delay(50);
+      LF.moveDeg({45 * LF.pos ,0,0});
+      delay(50);  
+    }
+
+    void initKuda(){
+      RF.moveDeg({45 * RF.pos ,0,-45});
+      delay(50);
+      LF.moveDeg({45 * LF.pos ,0,-45});
+      delay(50);  
+
+      RB.moveDeg({-45 * RB.pos ,0,-45});
+      delay(50);
+      LB.moveDeg({-45 * LB.pos ,0,-45});
+      delay(50);  
+
+      RM.moveDeg({0 * RM.pos ,0,-45});
+      delay(50);
+      LM.moveDeg({0 * LM.pos ,0,-45});
+      delay(50);  
+    }
+  
+    void panjatKuda(){
+      RF.moveDeg({45 * RF.pos ,0,0});
+      delay(50);
+      LF.moveDeg({45 * LF.pos ,0,0});
+      RF.moveDeg({45 * RF.pos ,0,0});
+      delay(50);
+      LB.moveDeg({-45 * LF.pos ,0,-90});
+      RB.moveDeg({-45 * LF.pos ,0,-90});
+      delay(50);
     }
 
     void putar(int dir){
-      RF.moveDeg({30 * RF.pos * dir,0,-45});
-      LM.moveDeg({-30 * LM.pos * dir,0,-45});
-      RB.moveDeg({30 * RB.pos * dir,0,-45});
       LF.moveDeg({-30 * LF.pos * dir,0,-90});
       RM.moveDeg({30 * RM.pos * dir,0,-90});
-      LB.moveDeg({-30 * RB.pos * dir,0,-90});
-      delay(100);
+      LB.moveDeg({-30 * LB.pos * dir,0,-90});
+      delay(50);
       RF.moveDeg({-30 * RF.pos * dir,0,-45});
       LM.moveDeg({30 * LM.pos * dir,0,-45});
       RB.moveDeg({-30 * RB.pos * dir,0,-45});
+      delay(50);
+
       LF.moveDeg({30 * LF.pos * dir,0,-90});
       RM.moveDeg({-30 * RM.pos * dir,0,-90});
-      LB.moveDeg({30 * RB.pos * dir,0,-90});
-      delay(100);
-      RF.moveDeg({-30 * RF.pos * dir,0,-90});
-      LM.moveDeg({30 * LM.pos * dir,0,-90});
-      RB.moveDeg({-30 * RB.pos * dir,0,-90});
-      LF.moveDeg({30 * LF.pos * dir,0,-45});
-      RM.moveDeg({-30 * RM.pos * dir,0,-45});
-      LB.moveDeg({30 * RB.pos * dir,0,-45});
-      delay(100);
+      LB.moveDeg({30 * LB.pos * dir,0,-90});
+      delay(50);
+      RF.moveDeg({30 * RF.pos * dir,0,-45});
+      LM.moveDeg({-30 * LM.pos * dir,0,-45});
+      RB.moveDeg({30 * RB.pos * dir,0,-45});
+      delay(50);
+      
       RF.moveDeg({30 * RF.pos * dir,0,-90});
       LM.moveDeg({-30 * LM.pos * dir,0,-90});
       RB.moveDeg({30 * RB.pos * dir,0,-90});
+      delay(50);
+      LF.moveDeg({30 * LF.pos * dir,0,-45});
+      RM.moveDeg({-30 * RM.pos * dir,0,-45});
+      LB.moveDeg({30 * LB.pos * dir,0,-45});
+      delay(50); 
+      
+      RF.moveDeg({-30 * RF.pos * dir,0,-90});
+      LM.moveDeg({30 * LM.pos * dir,0,-90});
+      RB.moveDeg({-30 * RB.pos * dir,0,-90});
+      delay(50);
       LF.moveDeg({-30 * LF.pos * dir,0,-45});
       RM.moveDeg({30 * RM.pos * dir,0,-45});
-      LB.moveDeg({-30 * RB.pos * dir,0,-45});
-      delay(100);
+      LB.moveDeg({-30 * LB.pos * dir,0,-45});
+      delay(50);
     }
 
     void jalanTest(int dir){

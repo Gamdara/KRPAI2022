@@ -10,8 +10,8 @@ void setup(){
 }
 
 void testPanjat(){
-  coba.initPanjatDua();
-  delay(lamabanget);
+//  coba.initPanjatDua();
+//  delay(lamabanget);
 
   coba.panjatDua(1);
   delay(lamabanget);
@@ -39,6 +39,27 @@ void testPanjatPenyu(){
   }
 }
 
+void testJalanLurus(){
+  coba.berdiri();
+  delay(2000);
+  coba.putar(KANAN,5);
+  delay(2000);
+  for(int i = 0; i < 5; i++){
+    coba.jalan(MAJU);
+    delay(sedang);
+  }
+  
+  coba.berdiri();
+  delay(2000);
+  coba.putar(KIRI,10);
+  delay(2000);
+  for(int i = 0; i < 5; i++){
+    coba.jalanDua(MAJU);
+    delay(sedang);
+  }
+  
+}
+
 void testJalan(){
   coba.berdiri();
   delay(2000);
@@ -59,21 +80,13 @@ void testPUTAR(){
   coba.berdiri();
   delay(2000);
   for(int i = 0; i < 3; i++){
-    coba.putar(KANAN);
+    coba.putar(KANAN, SUDUTPUTAR30);
     delay(sedang);
   }
-  
-  coba.berdiri();
-  delay(2000);
-  for(int i = 0; i < 2; i++){
-    coba.putar(KANAN);
-    delay(sedang);
-  }
-
   coba.berdiri();
   delay(2000);
   for(int i = 0; i < 3; i++){
-    coba.putar(KANAN);
+    coba.putar(KIRI, SUDUTPUTAR30);
     delay(sedang);
   }
 }
@@ -89,7 +102,7 @@ void testJalur(){
   coba.berdiri();
   delay(2000);
   for(int i = 0; i < 3; i++){
-    coba.putar(KANAN);
+    coba.putar(KANAN,18);
     delay(sedang);
   }
   
@@ -103,7 +116,7 @@ void testJalur(){
   coba.berdiri();
   delay(2000);
   for(int i = 0; i < 3; i++){
-    coba.putar(KIRI);
+    coba.putar(KIRI,18);
     delay(sedang);
   }
 
@@ -117,7 +130,7 @@ void testJalur(){
   coba.berdiri();
   delay(2000);
   for(int i = 0; i < 3; i++){
-    coba.putar(KANAN);
+    coba.putar(KANAN,18);
     delay(sedang);
   }
 
@@ -131,18 +144,18 @@ void testJalur(){
   coba.berdiri();
   delay(2000);
   for(int i = 0; i < 3; i++){
-    coba.putar(KIRI);
+    coba.putar(KIRI,18);
     delay(sedang);
   }  
 }
-
+//
 void loop(){
 //  testPUTAR();
  //  delay(2000);
 //  testJalan();
 //  delay(2000);
   
-//  testPanjatKuda();
-  testPanjatPenyu();
-  
+  testJalan();
+//  testPanjatPenyu();
+//  testJalan();
 }

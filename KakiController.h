@@ -1,7 +1,7 @@
 #include "Kaki.h"
 
-#define SUDUTJALAN 20
-#define SUDUTPUTAR 18
+#define SUDUTJALANDEF 20
+#define SUDUTPUTAR30 18
 
 
 class KakiController{
@@ -54,7 +54,7 @@ class KakiController{
       RB.berdiri();
     }
 
-    void putar(int dir){
+    void putar(int dir, int SUDUTPUTAR = SUDUTPUTAR30){
       LF.moveDeg({-1 * SUDUTPUTAR * LF.pos * dir,0,-90});
       RM.moveDeg({SUDUTPUTAR * RM.pos * dir,0,-90});
       LB.moveDeg({-1 * SUDUTPUTAR * LB.pos * dir,0,-90});
@@ -93,8 +93,8 @@ class KakiController{
     }
 
     void initPanjatDua(){
-      RB.moveDeg({-45 * RB.pos ,0,-60});
-      LB.moveDeg({-45 * LB.pos ,0,-60});
+      RB.moveDeg({-45 * RB.pos ,0,-45});
+      LB.moveDeg({-45 * LB.pos ,0,-45});
       delay(sedang);
 
       RF.moveDeg({45 * RF.pos ,0,-30});
@@ -152,7 +152,7 @@ class KakiController{
       delay(lama);  
     }
 
-    void jalan(int dir){
+    void jalan(int dir, int SUDUTJALAN = SUDUTJALANDEF){
       LF.moveDeg({SUDUTJALAN * LF.pos * dir,0,-90});
       RM.moveDeg({SUDUTJALAN * RM.pos * dir,0,-90});
       LB.moveDeg({SUDUTJALAN * LB.pos * dir,0,-90});
@@ -187,6 +187,44 @@ class KakiController{
       LF.moveDeg({SUDUTJALAN * LF.pos * dir,0,-45});
       RM.moveDeg({SUDUTJALAN * RM.pos * dir,0,-45});
       LB.moveDeg({SUDUTJALAN * LB.pos * dir,0,-45});
+      delay(sedang);
+    }
+
+    void jalanDua(int dir,int SUDUTJALAN = SUDUTJALANDEF){
+      RF.moveDeg({SUDUTJALAN * RF.pos * dir,0,-90});
+      LM.moveDeg({SUDUTJALAN * LM.pos * dir,0,-90});
+      RB.moveDeg({SUDUTJALAN * RB.pos * dir,0,-90});
+      delay(sedang);
+      LF.moveDeg({-1 * SUDUTJALAN * LF.pos * dir,0,-45});
+      RM.moveDeg({-1 * SUDUTJALAN * RM.pos * dir,0,-45});
+      LB.moveDeg({-1 * SUDUTJALAN * LB.pos * dir,0,-45});
+      delay(sedang);
+
+      RF.moveDeg({-1 * SUDUTJALAN * RF.pos * dir,0,-90});
+      LM.moveDeg({-1 * SUDUTJALAN * LM.pos * dir,0,-90});
+      RB.moveDeg({-1 * SUDUTJALAN * RB.pos * dir,0,-90});
+      delay(sedang);
+      LF.moveDeg({SUDUTJALAN * LF.pos * dir,0,-45});
+      RM.moveDeg({SUDUTJALAN * RM.pos * dir,0,-45});
+      LB.moveDeg({SUDUTJALAN * LB.pos * dir,0,-45});
+      delay(sedang);
+
+      LF.moveDeg({SUDUTJALAN * LF.pos * dir,0,-90});
+      RM.moveDeg({SUDUTJALAN * RM.pos * dir,0,-90});
+      LB.moveDeg({SUDUTJALAN * LB.pos * dir,0,-90});
+      delay(sedang);
+      RF.moveDeg({-1 * SUDUTJALAN * RF.pos * dir,0,-45});
+      LM.moveDeg({-1 * SUDUTJALAN * LM.pos * dir,0,-45});
+      RB.moveDeg({-1 * SUDUTJALAN * RB.pos * dir,0,-45});
+      delay(sedang);
+      
+      LF.moveDeg({-1 * SUDUTJALAN * LF.pos * dir,0,-90});
+      RM.moveDeg({-1 * SUDUTJALAN * RM.pos * dir,0,-90});
+      LB.moveDeg({-1 * SUDUTJALAN * LB.pos * dir,0,-90});
+      delay(sedang);
+      RF.moveDeg({SUDUTJALAN * RF.pos * dir,0,-45});
+      LM.moveDeg({SUDUTJALAN * LM.pos * dir,0,-45});
+      RB.moveDeg({SUDUTJALAN * RB.pos * dir,0,-45});
       delay(sedang);
     }
     
@@ -337,8 +375,8 @@ class KakiController{
       LF.moveDeg({0 * LF.pos ,0,-90});
       RM.moveDeg({0 * RM.pos ,0,-45});
       LM.moveDeg({0 * LM.pos ,0,-45});
-      RB.moveDeg({-45 * RB.pos ,0,-0});
-      LB.moveDeg({-45 * LB.pos ,0,-0});
+      RB.moveDeg({-45 * RB.pos ,0,-45});
+      LB.moveDeg({-45 * LB.pos ,0,-45});
     }
 
     void panjatPenyu(){

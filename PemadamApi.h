@@ -1,27 +1,33 @@
 
 class PemadamApi{
   private:
-    int pinApi;
-    int Api;
-    byte pump1;
+    int pinApi[5] = {A5,A4,A3,A2,A1};
+    int pump1 = 38;
+    
   public:
     PemadamApi(){
-        pinApi =A3;
-        pump1 = 7;
         
-        pinMode(pinApi, INPUT);
-        pinMode(pump1, OUTPUT); 
-        digitalWrite(pump1, LOW); 
     }
-    
-    bool cekApi(){
-      return digitalRead(pinApi);
-    }
-    
-    void semprot(){
-      unsigned long seconds = millis();
-      digitalWrite(pump1, HIGH);
-      if (seconds >= 5000)
+
+    void init(){
+      pinMode(pinApi[0], INPUT);
+      pinMode(pinApi[1], INPUT);
+      pinMode(pinApi[2], INPUT);
+      pinMode(pinApi[3], INPUT);
+      pinMode(pinApi[4], INPUT);
+      pinMode(pump1, OUTPUT); 
       digitalWrite(pump1, LOW);
     }
+    
+    int cekApi(int pin){
+      return digitalRead(pinApi[pin - 1]);
+    }
+    
+    void semprot(int state){
+//      unsigned long seconds = millis();
+      digitalWrite(pump1, state);
+//      if (seconds >= 3000)
+//      digitalWrite(pump1, LOW);
+    }
+
 };

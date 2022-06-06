@@ -1,4 +1,4 @@
-class SensorJarak{
+class  SensorJarak{
   private:
     int echoPin;
     int trigPin;
@@ -7,6 +7,9 @@ class SensorJarak{
     SensorJarak(int echoPin, int trigPin){
         this->echoPin = echoPin;
         this->trigPin = trigPin;
+        
+    }
+    void init(){
         pinMode(trigPin, OUTPUT);
         pinMode(echoPin, INPUT);
     }

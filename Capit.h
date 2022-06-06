@@ -1,43 +1,53 @@
 #include <Servo.h>
 
-#define pinAtas 7
-#define pinBawah 8
+//capit(bawah) - 30(taruh) 77(ambil)
+//siku(atas) - 100(turun) 45(naik)
+
+
+#define pinAtas 13
+#define pinBawah 12
 
 class Capit{
   private:
     Servo atas;
     Servo bawah;
+    
   public:
+    SensorJarak mata;
     Capit(){
+        
+    }
+    void init(){
         atas.attach(pinAtas);
         bawah.attach(pinBawah);
-    }
-    void ambil(){
-      bawah.write(50);
+        mata = SensorJarak(48,46);
+        mata.init();
+        atas.write(45);
+        bawah.write(30);
+        
     }
     void taruh(){
-      bawah.write(75);
+      for (int i = 77; i >= 30; i -= 1) {
+        bawah.write(i);
+        delay (5);
+      }
+    }
+    void ambil(){
+      for (int i = 30; i <= 77; i += 1) {
+        bawah.write(i);
+        delay (5); // Wait for 20 millisecond(s)
+      }
     }
     void naik(){
-      for(int i = 65; i > 29; i--) {
+      for (int i = 100; i >= 45; i -= 1) {
         atas.write(i);
-        delay(2);
-      } 
-      delay(lamabanget);
-      
-      for(int i = 29; i < 115; i++) {
-        atas.write(i);
-        delay(2);
+        delay (5); // Wait for 20 millisecond(s)
       }
     }
     void turun(){
-      atas.write(115);
-      delay(500);
-      
-      for(int i = 115; i > 65; i--) {
+      for (int i = 45; i <= 100; i += 1) {
         atas.write(i);
-        delay(2);
+        delay (5);
       }
     }
-    
 };

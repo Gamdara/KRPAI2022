@@ -8,9 +8,15 @@ class SensorJarakController{
     SensorJarak kanan;
     
     SensorJarakController(){
-        depan = SensorJarak(1,2);
-        belakang = SensorJarak(1,2);
-        kiri = SensorJarak(1,2);
-        kanan  = SensorJarak(1,2);
+        depan = SensorJarak(5,9);
+        belakang = SensorJarak(6,10);
+        kiri = SensorJarak(4,8);
+        kanan  = SensorJarak(7,11);
+    }
+    void init(){
+        depan.init();
+        belakang.init();
+        kiri.init();
+        kanan.init();
     }
 };

@@ -4,16 +4,14 @@ class Kompas{
     QMC5883LCompass compass;
   public:
     Kompas(){
+      
+    }
+    void init(){
       compass.init();  
     }
-    vec3_t getDirection(){
+    int getDirection(){
       compass.read();
-
-      byte a = compass.getAzimuth();
     
-      char myArray[3];
-      compass.getDirection(myArray, a);
-      
-      return {myArray[0], myArray[1], myArray[2]};  
+      return compass.getAzimuth();
     }
 };

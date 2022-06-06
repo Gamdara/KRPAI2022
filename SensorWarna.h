@@ -5,12 +5,20 @@
 #define S3 5
 #define sensorOut 6
 
+#define lamabanget 200
+#define lama 100
+#define sedang 50
+#define cepet 20
+
 class SensorWarna{
   private:
     int frequency = 0;
     int color=0;    
   public:
     SensorWarna(){
+    }
+
+    void init(){
         pinMode(S0, OUTPUT);
         pinMode(S1, OUTPUT);
         pinMode(S2, OUTPUT);

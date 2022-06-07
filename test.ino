@@ -2,7 +2,7 @@
 //
 //KakiController coba;
 //Capit capit;
-////SensorJarakController mata;
+//SensorJarakController mata;
 ////Robot KSR;
 //
 ////Servo c;
@@ -28,7 +28,7 @@
 ////    Serial.begin(9600);
 ////    capit.init();
 ////    testCapit();
-////    coba.berdiri();  
+//    coba.berdiri();  
 ////  delay(1000);
 //}
 //
@@ -191,20 +191,20 @@
 //}
 //
 //void loop(){
-//    testPutar();
-////  Serial.println(capit.mata.bacaJarak());
-////  delay(200);
-////  coba.berdiri();
-////  delay(lama);
-////  for(int i = 0; i < 5; i++){
-////    testJalur();  
-////    delay(1000);
-////  }
-////  coba.berdiri();
-////  delay(lama);
-////  for(int i = 0; i < 5; i++){
-////    testJalanKiri(MAJU, -65, 10, cepet);  
-////    delay(cepet);
-////  }
-//  
+//    coba.initPanjat();
+//    capit.naik();
+//    for(int i = 0 ; i < 5; i ++){
+//      coba.panjat(1);
+//      delay(lamabanget);
+//      coba.panjat(2);
+//      delay(lamabanget);  
+//    }  
+//    for(int i = 0 ; i < 10; i ++){
+//      coba.panjat(1, true);
+//      delay(lamabanget);
+//      coba.panjat(2, true);
+//      delay(lamabanget);  
+//    }  
+//    
+//    testPanjat();
 //}

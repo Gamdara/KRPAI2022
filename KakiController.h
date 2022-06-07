@@ -279,14 +279,22 @@ class KakiController{
       delay(lamabanget);
     }
 
-    void panjat(int urut){
+    void panjat(int urut, bool ubah = false){
       RM.moveDeg({-30,0,-80});
       LM.moveDeg({-30,0,-80});
       delay(sedang);
 
-      RF.moveDeg({45,0,-45});
-      LF.moveDeg({45,0,-45});
-      delay(sedang);
+      if(!ubah){
+        RF.moveDeg({45,0,-45});
+        LF.moveDeg({45,0,-45});
+        delay(sedang);  
+      }
+      else{
+        RF.moveDeg({45,0,-80});
+        LF.moveDeg({45,0,-80});
+        delay(sedang);  
+      }
+      
 
       if(urut ==1){
         RM.moveDeg({-30  ,0,0});

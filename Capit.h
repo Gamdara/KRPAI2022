@@ -4,8 +4,8 @@
 //siku(atas) - 100(turun) 45(naik)
 
 
-#define pinAtas 13
-#define pinBawah 12
+#define pinAtas 12
+#define pinBawah 13
 
 class Capit{
   private:
@@ -27,27 +27,27 @@ class Capit{
         
     }
     void taruh(){
-      for (int i = 77; i >= 30; i -= 1) {
+      for (int i = 77; i >= -10; i -= 1) {
         bawah.write(i);
-        delay (5);
+        delay (20);
       }
     }
     void ambil(){
-      for (int i = 30; i <= 77; i += 1) {
+      for (int i = -10; i <= 77; i += 1) {
         bawah.write(i);
-        delay (5); // Wait for 20 millisecond(s)
+        delay (20); 
       }
     }
     void naik(){
-      for (int i = 100; i >= 45; i -= 1) {
+      for (int i = 100; i >= 60; i -= 1) {
         atas.write(i);
-        delay (5); // Wait for 20 millisecond(s)
+        delay (10); 
       }
     }
     void turun(){
-      for (int i = 45; i <= 100; i += 1) {
+      for (int i = 60; i <= 100; i += 1) {
         atas.write(i);
-        delay (5);
+        delay (10);
       }
     }
 };

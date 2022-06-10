@@ -3,7 +3,7 @@
 //KakiController coba;
 //Capit capit;
 //SensorJarakController mata;
-////Robot KSR;
+//Robot KSR;
 //
 ////Servo c;
 ////Servo d;
@@ -28,7 +28,8 @@
 ////    Serial.begin(9600);
 ////    capit.init();
 ////    testCapit();
-//    coba.berdiri();  
+//    KSR.init();  
+//    KSR.kaki.berdiri();
 ////  delay(1000);
 //}
 //
@@ -190,21 +191,41 @@
 //  delay(2000);
 //}
 //
+//void wallAvoid(){
+//  if(KSR.mata.depan.bacaJarak() > 23){
+//    KSR.jalanZigZag(MAJU,-65,15,cepet);
+//    delay(cepet);  
+//  }
+//  else if(KSR.mata.kanan.bacaJarak() > KSR.mata.kiri.bacaJarak()){
+//    for(int i =0; i < 3; i++){
+//      KSR.kaki.putar(KANAN,18);
+//      delay(cepet);  
+//    }  
+//  }
+//  else if(KSR.mata.kiri.bacaJarak() > KSR.mata.kanan.bacaJarak()){
+//    for(int i =0; i < 3; i++){
+//      KSR.kaki.putar(KIRI,18);
+//      delay(cepet);  
+//    }  
+//  }
+//}
+//
 //void loop(){
-//    coba.initPanjat();
-//    capit.naik();
-//    for(int i = 0 ; i < 5; i ++){
-//      coba.panjat(1);
-//      delay(lamabanget);
-//      coba.panjat(2);
-//      delay(lamabanget);  
-//    }  
-//    for(int i = 0 ; i < 10; i ++){
-//      coba.panjat(1, true);
-//      delay(lamabanget);
-//      coba.panjat(2, true);
-//      delay(lamabanget);  
-//    }  
+//    if(KSR.mata.depan.bacaJarak() < 24 &&  KSR.mata.belakang.bacaJarak() < 12){
+//      for(int i = 0; i < 3; i++){
+//        KSR.kaki.putar(KANAN,18);
+//        delay(cepet);
+//      }
+//    }
+//    else if(KSR.mata.kanan.bacaJarak() > 35){
+//      for(int i = 0; i < 6; i++){
+//        KSR.kaki.putar(KANAN,18);
+//        delay(cepet);
+//      }
+//    }
+//    else{
+//      KSR.jalanZigZag(MAJU,-65, 15, cepet);
+//      delay(cepet);  
+//    }
 //    
-//    testPanjat();
 //}

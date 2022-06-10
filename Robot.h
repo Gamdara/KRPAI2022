@@ -26,23 +26,23 @@ class Robot{
       IR.init();
       mata.init();
       pemadam.init();
-//      kompas.init();
-//      sWarna.init();
+      kaki.berdiri();
+      delay(cepet);
+      capit.naik();
+      delay(cepet);
+      capit.taruh();
     }
     void jalanZigZag(int dir = MAJU, int SUDUTNAIK = -65, int SUDUTJALAN = SUDUTJALANDEF, int dile = sedang){
-//      if(mata.kanan.bacaJarak() < 12) {
-//        kaki.berdiri();
-//        delay(20);
-//        kaki.putar(KIRI, 5, SUDUTNAIK, dile);
-//        delay(20);
-//        kaki.berdiri();
-//        delay(20);
-//      }
-//      else if(mata.kanan.bacaJarak() < 10) kaki.putar(KANAN, 5);
-//      if(arah == KANAN)
-      kaki.jalan(dir, SUDUTNAIK, SUDUTJALAN, dile);
-//      if(arah == KIRI)
-//        kaki.jalanKiri(dir, SUDUTNAIK, SUDUTJALAN, dile);
+      if(mata.bacaDiagonal(KANAN) < 15)
+        kaki.putar(KIRI, 5);
+      else if(mata.bacaDiagonal(KIRI) < 15) 
+        kaki.putar(KANAN, 5);
+      else if(mata.kanan.bacaJarak() < 13)
+        kaki.jalanSamping(KANAN);
+      else if(mata.kiri.bacaJarak() < 13)
+        kaki.jalanSamping(KIRI);
+      else
+        kaki.jalan(dir, SUDUTNAIK, SUDUTJALAN, dile);
     }
     void jalanAvoid(int SUDUTNAIK = -65, int SUDUTJALAN = SUDUTJALANDEF, int dile = sedang){
       if(mata.kanan.bacaJarak() < 10) {
@@ -62,4 +62,5 @@ class Robot{
       for(int i = 0; i < jumlah; i++)
         jalanZigZag(SUDUTNAIK, SUDUTJALAN, dile);
     }
+
 };

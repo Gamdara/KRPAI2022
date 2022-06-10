@@ -8,10 +8,10 @@ class SensorJarakController{
     SensorJarak kanan;
     
     SensorJarakController(){
-        depan = SensorJarak(5,9);
-        belakang = SensorJarak(4,10);
-        kiri = SensorJarak(6,8);
-        kanan  = SensorJarak(3,11);
+        depan = SensorJarak(4,8);
+        belakang = SensorJarak(6,10);
+        kiri = SensorJarak(7,11);
+        kanan  = SensorJarak(5,9);
     }
     void init(){
         depan.init();
@@ -43,5 +43,21 @@ class SensorJarakController{
         kiri.setNote(belakang.note);
         kanan.setNote(depan.note);
       }
+    }
+
+    float bacaDiagonal(int dir){
+      int de = depan.bacaJarak();
+      int k = 0;
+      if(dir == KANAN)
+      k = kanan.bacaJarak();
+      else
+      k = kiri.bacaJarak();
+      
+      float a = sqrt(pow(de,2) + pow(k,2) );
+      float m = k / (k + de) * a;
+      float n = de / (k + de) * a;
+      
+      float d = sqrt((de*k) - (m*n));
+      return d;
     }
 };

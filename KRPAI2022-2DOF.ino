@@ -1,5 +1,4 @@
 #include "header.h"
-//#include "Robot.h"
 
 Robot KSR;
 int state = 0;
@@ -11,25 +10,35 @@ void setup(){
   Serial.begin(1000000);
   KSR.init();
   delay(cepet);
-  KSR.kaki.berdiri();
-  delay(cepet);
-  KSR.capit.naik();
-  KSR.capit.taruh();
-  
   delay(1000);
   state = 1;
 }
 
-void loopAA(){
+void loop(){
   switch(state){
 //  jalan dari home
     case 1:
-      if(KSR.mata.depan.bacaJarak() > 15){
-        KSR.jalanZigZag(MAJU);
-        delay(lama);
+      if(KSR.mata.depan.bacaJarak() > 23){
+        if(KSR.mata.depan.bacaJarak() < 24 &&  KSR.mata.belakang.bacaJarak() < 12){
+          for(int i = 0; i < 3; i++){
+            KSR.kaki.putar(KANAN,18);
+            delay(cepet);
+          }
+        }
+        else if(KSR.mata.kanan.bacaJarak() > 35){
+          for(int i = 0; i < 6; i++){
+            KSR.kaki.putar(KANAN,18);
+            delay(cepet);
+          }
+        }
+        else{
+          KSR.jalanZigZag(MAJU,-65, 15, cepet);
+          delay(cepet);  
+        }
       }
       else{
-        for(int i = 0; i < 3; i++){
+        int depan = KSR.mata.depan.bacaJarak();
+        while(abs(KSR.mata.kanan.bacaJarak() - depan) < 5){
           KSR.kaki.putar(KIRI,18);
           delay(lama);  
         }
@@ -39,14 +48,15 @@ void loopAA(){
       break;
 //  lewati puing
     case 2:
-      if(KSR.mata.depan.bacaJarak() > 15){
-        KSR.jalanZigZag(MAJU, -35, 15, cepet);
-        delay(cepet);
+      if(KSR.mata.depan.bacaJarak() > 23){
+        KSR.jalanZigZag(MAJU, -45, 15, lama);
+        delay(lama);
       }
       else{
+        int depan = KSR.mata.depan.bacaJarak();
         for(int i = 0; i < 3; i++){
-          KSR.kaki.putar(KIRI);
-          delay(lama);  
+          KSR.kaki.putar(KIRI,18);
+          delay(cepet);
         }
         KSR.kaki.berdiri();
         delay(lama);
@@ -56,30 +66,28 @@ void loopAA(){
       break;
 //  panjat bukit
     case 3:
-      int garis = KSR.IR.belakang.cekGaris();
-      
-      if(garis == 0 && counterState == 0){
+      if(counterState == 0){
         for(int i = 0 ; i < 5; i ++){
           KSR.kaki.panjat(1);
           delay(lamabanget);
           KSR.kaki.panjat(2);
           delay(lamabanget);  
-        }  
-        delay(2000);
+        }
+        counterState++;   
       }
-      else if(garis == 1 && counterState >= 0){
+      else if(counterState >= 0){
         KSR.kaki.berdiri();  
         delay(20);
         KSR.jalanZigZag(MAJU,-45,15, lamabanget);  
         delay(lamabanget);
         counterState++;
       }
-      else if(garis == 0 && counterState > 0){
+      else if(KSR.mata.belakang.bacaJarak() < 30){
         KSR.kaki.berdiri();  
         delay(sedang);
         for(int i = 0; i < 3; i++){
-          KSR.kaki.putar(KIRI);
-          delay(lama);  
+          KSR.kaki.putar(KIRI,18);
+          delay(cepet);
         }
         counterState = 0;
         state++;
@@ -93,13 +101,13 @@ void loopAA(){
 //  jalan belok ke tikungan ruang 1  
     case 4:
       if(KSR.mata.depan.bacaJarak() > 35){
-        KSR.jalanZigZag(MAJU);
-        delay(lama);
+        KSR.jalanZigZag(MAJU, -65, 15, cepet);
+        delay(cepet);
       }
       else{
         for(int i = 0; i < 3; i++){
           KSR.kaki.putar(KIRI,18);
-          delay(lama);  
+          delay(cepet);
         }
         KSR.kaki.berdiri();
         state++;  
@@ -107,8 +115,8 @@ void loopAA(){
       break;  
 //  masuk ruang 1
     case 5:
-      if(KSR.mata.depan.bacaJarak() > 15 ){
-        KSR.jalanZigZag(MAJU);
+      if(KSR.mata.depan.bacaJarak() > 35){
+        KSR.jalanZigZag(MAJU, -45, 15, lama);
         delay(lama);
       }
       else if(abs(KSR.mata.kanan.bacaJarak() - KSR.mata.kiri.bacaJarak()) > 5 ){
@@ -120,14 +128,24 @@ void loopAA(){
         delay(sedang);
       }
       else{
-        state++;  
+        if(KSR.pemadam.cekApi(1) > KSR.pemadam.cekApi(5)){
+          KSR.kaki.putar(KIRI,18);  
+          delay(cepet);
+        }
+        else if(KSR.pemadam.cekApi(5) > KSR.pemadam.cekApi(1)){
+          KSR.kaki.putar(KANAN,18);  
+          delay(cepet);
+        }
+        else{
+          state++;    
+        }
       }
       break;
 //  padam api  
     case 6:
       if(KSR.pemadam.cekApi(3)){
         KSR.pemadam.semprot(HIGH);
-        delay(sedang);  
+        delay(cepet);  
         KSR.kaki.putar(KIRI);
         delay(cepet);  
         KSR.kaki.putar(KANAN);
@@ -138,12 +156,16 @@ void loopAA(){
         delay(cepet);  
       }
       else{
+        KSR.capit.taruh();
+        delay(cepet);
+        KSR.capit.turun();
+        delay(cepet);
         state++;  
       }
       break;
 //  cari korban  
     case 7:
-      if(KSR.mata.kiri.bacaJarak() > 5 ){
+      if(KSR.mata.kiri.bacaJarak() > 25 ){
         KSR.kaki.jalanSamping(KIRI);
         delay(sedang);
       }
@@ -151,7 +173,7 @@ void loopAA(){
         state++;
         break;
       }
-      else if(KSR.mata.kanan.bacaJarak() > 5 ){
+      else if(KSR.mata.kanan.bacaJarak() > 25 ){
         KSR.kaki.jalanSamping(KANAN);
         delay(sedang);
       }
@@ -163,10 +185,13 @@ void loopAA(){
 //  angkat korban  
     case 8:
       KSR.capit.turun();
+      delay(cepet);
       KSR.capit.taruh();
-      delay(sedang);
-      KSR.jalanLangkah(2);
-      delay(sedang);
+      delay(cepet);
+      KSR.kaki.jalan(MAJU, -65, 15, cepet );
+      delay(cepet);
+      KSR.kaki.jalan(MAJU, -65, 15, cepet );
+      delay(cepet);
       KSR.capit.ambil();
       delay(sedang);
       KSR.capit.naik();
@@ -175,40 +200,42 @@ void loopAA(){
       break;
 //  ke safe zone  
     case 9:
-      if(KSR.mata.belakang.bacaJarak() > 15){
+      if(KSR.mata.belakang.bacaJarak() > 35){
         KSR.jalanZigZag( MUNDUR, -45, 15, sedang);
       }
       else{
-        for(int i = 0; i < 8; i++){
+        for(int i = 0; i < 6; i++){
           KSR.kaki.putar(KANAN);
-          delay(lama);  
+          delay(cepet);  
         }  
         KSR.capit.turun();
-        delay(lama);
+        delay(sedang);
         KSR.capit.taruh();
-        delay(lama);
+        delay(sedang);
         KSR.capit.naik();
-        delay(lama);
+        delay(sedang);
         state++;
       }
       break;
 //  mundur dari safe zone
     case 10:
-      if(KSR.mata.depan.bacaJarak() <= 15){
-        KSR.kaki.jalan(MUNDUR);
+      if(KSR.mata.depan.bacaJarak() <= 35){
+        KSR.kaki.jalan(MUNDUR, -65, 15, cepet);
+        delay(cepet);
       }
       else{
         for(int i = 0; i < 3; i++){
           KSR.kaki.putar(KIRI);
-          delay(lama);  
+          delay(cepet);  
         }
         state++;  
       }
       break;
 //  ke tikungan home  
     case 11:
-      if(KSR.mata.depan.bacaJarak() > 15){
-        KSR.jalanZigZag(MAJU);
+      if(KSR.mata.depan.bacaJarak() > 23){
+        KSR.jalanZigZag(MAJU, -65, 15, cepet);
+        delay(cepet);
       }
       else{
         for(int i = 0; i < 3; i++){
@@ -221,7 +248,8 @@ void loopAA(){
 //  kembali ke home
     case 12:
       if(abs(KSR.mata.depan.bacaJarak() - KSR.mata.belakang.bacaJarak()) > 5 ){
-        KSR.jalanZigZag(MAJU);
+        KSR.jalanZigZag(MAJU, -65, 15, cepet);
+        delay(cepet);
       }
       else{
         KSR.kaki.berdiri();
@@ -232,7 +260,7 @@ void loopAA(){
   }
 }
 
-void loop(){
+void loopAA(){
   switch(state){
 //  jalan dari home
     case 1:

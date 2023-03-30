@@ -3,12 +3,12 @@ class Kaki{
     int coxaID;
     int fermurID;
     int thibiaID;
-    int pos;
-    int grup;
-    int letak;
+    int pos; //KIRI / KANAN
+    int grup; //GRUP1/2
+    int letak; //DEPAN/TENGAH/BELAKANG
     
-    vec3_t standPoint;
-    vec3_t standPointSpread;
+    vec3_t standPoint; //titik berdiri semut
+    vec3_t standPointSpread; //titik berdiri laba laba
     
   public:
     Kaki(){}
@@ -23,93 +23,25 @@ class Kaki{
       
       this->standPoint = {0,-10,4};
       
-      if(letak == 1)
+      if(letak == DEPAN)
           this->standPointSpread = rotateMatrix(this->standPoint, -45 * this->pos);
-      else if(letak == 3)
+      else if(letak == BELAKANG)
           this->standPointSpread = rotateMatrix(this->standPoint, 45 * this->pos);
       else 
           this->standPointSpread = this->standPoint;
       
     }
 
-    void langkah(vec3_t P1,vec3_t P2,vec3_t P3,vec3_t P4, float t){
-        ArduinoQueue<vec3_t> steps = trajectory(P1,P2,P3,P4,t);
-        while(!steps.isEmpty()){
-            vec3_t temp = steps.dequeue();
-            temp.x *= this->pos;
-            moveToPoint(temp);
-            delay(100);
-        }
-    }
-    
-    void jalan(int dir){
-        vec3_t P1 = {-2,0,0};
-        vec3_t tinggi = {0,3,0};
-        vec3_t P4 = {2,0,0};
-
-        if(this->grup == 1){
-            langkah(standPoint + P1 * dir,standPoint + tinggi + P1 * dir,standPoint + tinggi + P4 * dir,standPoint + P4 * dir,0.1);
-            delay(200);
-            langkah(standPoint + P4 * dir,standPoint + P4 * dir,standPoint +  P1 * dir,standPoint + P1 * dir,0.1);
+    void langkah(vec3_t pointMaju, vec3_t pointMundur){
+        if(this->grup == GRUP1){
+          pointMaju.x *= this->pos;
+          moveToPoint(pointMaju);
         }
         else{
-            langkah(standPoint + P4 * dir,standPoint + P4 * dir,standPoint +  P1 * dir,standPoint + P1 * dir,0.1);
-            delay(200);
-            langkah(standPoint + P1 * dir,standPoint + tinggi + P1 * dir,standPoint + tinggi + P4 * dir,standPoint + P4 * dir,0.1);
+          pointMundur.x *= this->pos;
+          moveToPoint(pointMundur);
         }
-    }
-
-    void jalanSamping(int dir){
-        vec3_t P1 = {0,0,1 * this->pos};
-        vec3_t tinggi = {0,1,0};
-        vec3_t P4 = {0,0,-1* this->pos};
-
-        if(this->grup == 1){
-            langkah(standPointSpread + P1 * dir,standPointSpread + tinggi + P1 * dir,standPointSpread + tinggi + P4 * dir,standPointSpread + P4 * dir,0.1);
-            delay(200);
-            langkah(standPointSpread + P4 * dir,standPointSpread + P4 * dir,standPointSpread +  P1 * dir,standPointSpread + P1 * dir,0.1);
-        }
-        else{
-            langkah(standPointSpread + P4 * dir,standPointSpread + P4 * dir,standPointSpread +  P1 * dir,standPointSpread + P1 * dir,0.1);
-            delay(200);
-            langkah(standPointSpread + P1 * dir,standPointSpread + tinggi + P1 * dir,standPointSpread + tinggi + P4 * dir,standPointSpread + P4 * dir,0.1);
-        }
-    }
-
-    void jalanSpread(int dir){
-        vec3_t P1 = {-2,0,0};
-        vec3_t tinggi = {0,3,0};
-        vec3_t P4 = {2,0,0};
-        
-        if(this->grup == 1){
-            langkah(standPointSpread + P1 * dir,standPointSpread + tinggi + P1 * dir,standPointSpread + tinggi + P4 * dir,standPointSpread + P4 * dir,0.1);
-            delay(200);
-            langkah(standPointSpread + P4 * dir,standPointSpread + P4 * dir,standPointSpread +  P1 * dir,standPointSpread + P1 * dir,0.1);
-        }
-        else{
-            langkah(standPointSpread + P4 * dir,standPointSpread + P4 * dir,standPointSpread +  P1 * dir,standPointSpread + P1 * dir,0.1);
-            delay(200);
-            langkah(standPointSpread + P1 * dir,standPointSpread + tinggi + P1 * dir,standPointSpread + tinggi + P4 * dir,standPointSpread + P4 * dir,0.1);
-        }
-    }
-
-    void putar(float deg, int dir){
-        vec3_t target = this->standPointSpread;
-        vec3_t fw = rotateMatrix(target, deg * dir);
-        vec3_t bw = rotateMatrix(target, deg *-1 * dir);
-        vec3_t tinggi = {0,3,0};
-        vec3_t titikBantu = {0,3,target.z-target.z};
-        
-        if(this->grup == 1){
-            langkah(fw,fw + titikBantu + tinggi,bw+ titikBantu + tinggi,bw,0.1);
-            delay(200);
-            langkah(bw,bw + titikBantu,fw+ titikBantu ,fw,0.1);
-        }
-        else{
-            langkah(bw,bw + titikBantu,fw+ titikBantu ,fw,0.1);
-            delay(200);
-            langkah(fw,fw + titikBantu + tinggi,bw+ titikBantu + tinggi,bw,0.1);
-        }
+        delay(20);
     }
 
     void moveToPoint(vec3_t target){

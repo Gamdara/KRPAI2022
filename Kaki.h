@@ -22,17 +22,34 @@ class Kaki{
       this->letak = letak;
       
       this->standPoint = {0,-10,4};
-      
       if(letak == DEPAN)
-          this->standPointSpread = rotateMatrix(this->standPoint, -45 * this->pos);
+        this->standPoint = rotateMatrix(this->standPoint, 15 * KIRI * this->pos);
       else if(letak == BELAKANG)
-          this->standPointSpread = rotateMatrix(this->standPoint, 45 * this->pos);
-      else 
-          this->standPointSpread = this->standPoint;
-      
+        this->standPoint = rotateMatrix(this->standPoint, 15 * KANAN * this->pos);
+    }
+
+    void langkahSpread(vec3_t pointMaju, vec3_t pointMundur){
+        if(this->grup == GRUP1){
+          pointMaju.x *= this->pos;
+          moveToPoint(pointMaju);
+        }
+        else{
+          pointMundur.x *= this->pos;
+          moveToPoint(pointMundur);
+        }
+        delay(20);
     }
 
     void langkah(vec3_t pointMaju, vec3_t pointMundur){
+        if(letak == DEPAN){
+          pointMaju = rotateMatrix(pointMaju, 15 * KIRI * this->pos);
+          pointMundur = rotateMatrix(pointMundur, 15 * KIRI * this->pos);
+        }
+        else if(letak == BELAKANG){
+          pointMaju = rotateMatrix(pointMaju, 15 * KANAN * this->pos);
+          pointMundur = rotateMatrix(pointMundur, 15 * KANAN * this->pos);
+        }
+
         if(this->grup == GRUP1){
           pointMaju.x *= this->pos;
           moveToPoint(pointMaju);

@@ -14,8 +14,9 @@ void loop()
     Serial.println("Init");
     coba.init();
     delay(1000);
-    Serial.println("berdidi");
+    Serial.println("berdiri");
     coba.berdiri();
+    delay(1000);
     
     Serial.println("maju");
     for(int i = 0; i < 3; i++)
